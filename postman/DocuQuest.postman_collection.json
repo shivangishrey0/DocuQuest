@@ -1,0 +1,232 @@
+{
+  "info": {
+    "name": "DocuQuest — Document Intelligence & Question Extraction",
+    "description": "End-to-end workflow: register/login, create a document group, upload a question paper and its answer key, poll status, and retrieve structured questions/answers/review items.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000" },
+    { "key": "access_token", "value": "" },
+    { "key": "group_id", "value": "" },
+    { "key": "document_id", "value": "" },
+    { "key": "answer_key_document_id", "value": "" },
+    { "key": "question_id", "value": "" },
+    { "key": "email", "value": "demo@example.com" },
+    { "key": "password", "value": "supersecret123" }
+  ],
+  "item": [
+    {
+      "name": "1. Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{base_url}}/api/v1/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "2. Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.collectionVariables.set('access_token', body.access_token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+        "url": "{{base_url}}/api/v1/auth/login",
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "username", "value": "{{email}}" },
+            { "key": "password", "value": "{{password}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. Create Document Group",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.collectionVariables.set('group_id', body.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": "{{base_url}}/api/v1/groups",
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Sample Aptitude Test Set A\"\n}" }
+      }
+    },
+    {
+      "name": "4. Upload Question Paper (PDF)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.collectionVariables.set('document_id', body.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": {
+          "raw": "{{base_url}}/api/v1/documents/upload?group_id={{group_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "documents", "upload"],
+          "query": [{ "key": "group_id", "value": "{{group_id}}" }]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "file", "type": "file", "src": "sample_data/question_paper_digital.pdf" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Upload Answer Key (PDF, separate document)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const body = pm.response.json();",
+              "pm.collectionVariables.set('answer_key_document_id', body.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": {
+          "raw": "{{base_url}}/api/v1/documents/upload?group_id={{group_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "documents", "upload"],
+          "query": [{ "key": "group_id", "value": "{{group_id}}" }]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "file", "type": "file", "src": "sample_data/answer_key.pdf" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "6. Upload Scanned Low-Quality Image",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/documents/upload",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "file", "type": "file", "src": "sample_data/scanned_lowquality.png" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "7. Upload Unsupported File Type (expect 415)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/documents/upload",
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "file", "type": "file", "src": "sample_data/unsupported.txt" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "8. Get Document Status",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/documents/{{document_id}}/status"
+      }
+    },
+    {
+      "name": "9. List Documents",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/documents"
+      }
+    },
+    {
+      "name": "10. List Questions for Document",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/documents/{{document_id}}/questions"
+      }
+    },
+    {
+      "name": "11. List Questions for Group (with matched answers)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/groups/{{group_id}}/questions"
+      }
+    },
+    {
+      "name": "12. Get Single Question",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/questions/{{question_id}}"
+      }
+    },
+    {
+      "name": "13. Get Answer Key for Document",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/documents/{{answer_key_document_id}}/answer-key"
+      }
+    },
+    {
+      "name": "14. Get Review/Warning Items for Document",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/documents/{{document_id}}/review-items"
+      }
+    },
+    {
+      "name": "15. Filter Questions by Status=review",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+        "url": "{{base_url}}/api/v1/documents/{{document_id}}/questions?status=review"
+      }
+    }
+  ]
+}
