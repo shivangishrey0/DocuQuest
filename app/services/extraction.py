@@ -8,7 +8,7 @@ at all is treated as a single review-flagged fragment rather than dropped.
 
 This module intentionally has zero external-service dependency so the system
 works fully offline; app/services/ai_extraction.py can be layered on top when
-OPENAI_API_KEY is configured (see extraction pipeline in workers/tasks.py).
+GROQ_API_KEY is configured (see extraction pipeline in workers/tasks.py).
 """
 
 import re

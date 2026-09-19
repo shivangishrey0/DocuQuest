@@ -20,8 +20,8 @@ class Settings(BaseSettings):
     ALLOWED_EXTENSIONS: str = "pdf,jpg,jpeg,png"
 
     TESSERACT_CMD: str = ""
-    OPENAI_API_KEY: str = ""
-    OPENAI_MODEL: str = "gpt-4o-mini"
+    GROQ_API_KEY: str = ""
+    GROQ_MODEL: str = "llama-3.1-8b-instant"
 
     ENVIRONMENT: str = "development"
 

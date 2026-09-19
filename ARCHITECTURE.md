@@ -85,7 +85,7 @@ system's own review pipeline. The trade-off is quality on genuinely difficult sc
 (handwriting, heavy skew, low-resolution photos) versus a modern vision-LLM. The
 codebase isolates this choice behind `services/ocr.py`; swapping in a hosted
 OCR/Document-AI provider (or an LLM vision call) means changing one module, not the
-pipeline. `OPENAI_API_KEY` is wired into config as a placeholder for exactly this
+pipeline. `GROQ_API_KEY` is wired into config as a placeholder for exactly this
 kind of pluggable upgrade, but is **not required** — the system is fully functional
 with zero external AI credentials, satisfying "AI tools are permitted" without
 making them mandatory.
@@ -211,7 +211,7 @@ support documents being processed concurrently").
   which rules out path traversal via a crafted filename.
 - **Secrets**: all credentials/config are environment-based (`.env`, gitignored);
   `.env.example` documents every variable with placeholder values only. No secrets
-  are committed. `OPENAI_API_KEY` (unused by default) would flow the same way if
+  are committed. `GROQ_API_KEY` (unused by default) would flow the same way if
   ever enabled — never embedded in code or logged.
 - **Error handling**: global handlers normalize both HTTP and validation errors to
   a consistent `{"detail": ...}` JSON shape (no stack traces leak to clients);

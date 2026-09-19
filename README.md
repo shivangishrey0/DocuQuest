@@ -81,7 +81,7 @@ no secrets are committed. Key variables:
 | `JWT_SECRET_KEY` | Sign/verify access tokens — **change in production** |
 | `STORAGE_ROOT` | Where uploaded files and rendered page images are stored |
 | `MAX_UPLOAD_SIZE_MB`, `ALLOWED_EXTENSIONS` | Upload validation limits |
-| `OPENAI_API_KEY` (optional) | Not required — the system runs fully offline with the rule-based extractor. Reserved for an optional future AI-assisted extraction pass. |
+| `GROQ_API_KEY` (optional) | Not required — the system runs fully offline with the rule-based extractor. Reserved for an optional future AI-assisted extraction pass (Groq's LLM API). |
 
 ## API surface (summary)
 
