@@ -1,0 +1,196 @@
+[
+  {
+    "id": "cd26faae-ba24-4efd-81dc-92a1943e641c",
+    "document_id": "0dbef8fa-4061-491e-a105-18b533570ad9",
+    "question_number": "1",
+    "question_text": "What is the capital of France?",
+    "options": [
+      {
+        "text": "Paris",
+        "label": "A"
+      },
+      {
+        "text": "Berlin",
+        "label": "B"
+      },
+      {
+        "text": "Madrid",
+        "label": "C"
+      },
+      {
+        "text": "Rome",
+        "label": "D"
+      }
+    ],
+    "question_type": "mcq_single",
+    "images": [],
+    "answer": "A: Paris",
+    "answer_confidence": 0.85,
+    "answer_source": "answer_key_doc:30ef1dce-d68e-4206-b44d-6096c669017d",
+    "source_pages": [
+      1
+    ],
+    "spans_multiple_pages": false,
+    "confidence": 1.0,
+    "status": "success"
+  },
+  {
+    "id": "e47578f1-4244-4d97-8c9a-5e43f9430361",
+    "document_id": "0dbef8fa-4061-491e-a105-18b533570ad9",
+    "question_number": "2",
+    "question_text": "Which data structure uses FIFO order?",
+    "options": [
+      {
+        "text": "Stack",
+        "label": "A"
+      },
+      {
+        "text": "Queue",
+        "label": "B"
+      },
+      {
+        "text": "Tree",
+        "label": "C"
+      },
+      {
+        "text": "Graph",
+        "label": "D"
+      }
+    ],
+    "question_type": "mcq_single",
+    "images": [],
+    "answer": "B: Queue",
+    "answer_confidence": 0.85,
+    "answer_source": "answer_key_doc:30ef1dce-d68e-4206-b44d-6096c669017d",
+    "source_pages": [
+      1
+    ],
+    "spans_multiple_pages": false,
+    "confidence": 1.0,
+    "status": "success"
+  },
+  {
+    "id": "5047a59e-9c2c-493d-ab52-3ee4c1f2ee31",
+    "document_id": "0dbef8fa-4061-491e-a105-18b533570ad9",
+    "question_number": "3",
+    "question_text": "What does CPU stand for?",
+    "options": [
+      {
+        "text": "Central Processing Unit",
+        "label": "A"
+      },
+      {
+        "text": "Computer Personal Unit",
+        "label": "B"
+      },
+      {
+        "text": "Central Program Utility",
+        "label": "C"
+      },
+      {
+        "text": "Core Processing Unit",
+        "label": "D"
+      }
+    ],
+    "question_type": "mcq_single",
+    "images": [],
+    "answer": "A: Central Processing Unit",
+    "answer_confidence": 0.85,
+    "answer_source": "answer_key_doc:30ef1dce-d68e-4206-b44d-6096c669017d",
+    "source_pages": [
+      1
+    ],
+    "spans_multiple_pages": false,
+    "confidence": 1.0,
+    "status": "success"
+  },
+  {
+    "id": "dfdce825-7da8-4b79-b412-4c02fc57c9b9",
+    "document_id": "0dbef8fa-4061-491e-a105-18b533570ad9",
+    "question_number": "4",
+    "question_text": "2 + 2 * 2 equals?",
+    "options": [
+      {
+        "text": "6",
+        "label": "A"
+      },
+      {
+        "text": "8",
+        "label": "B"
+      },
+      {
+        "text": "4",
+        "label": "C"
+      },
+      {
+        "text": "10",
+        "label": "D"
+      }
+    ],
+    "question_type": "mcq_single",
+    "images": [],
+    "answer": "B: 8",
+    "answer_confidence": 0.85,
+    "answer_source": "answer_key_doc:30ef1dce-d68e-4206-b44d-6096c669017d",
+    "source_pages": [
+      1
+    ],
+    "spans_multiple_pages": false,
+    "confidence": 1.0,
+    "status": "success"
+  },
+  {
+    "id": "8ec5273a-7e4c-44ac-87f5-08b1245c42ff",
+    "document_id": "0dbef8fa-4061-491e-a105-18b533570ad9",
+    "question_number": "5",
+    "question_text": "A train travels from City A to City B, a distance of 300 km, at an average speed of 60\nkm/h. Midway through the journey it stops for 45 minutes at a station due to signal\nfailure, then continues the rest of the journey at a reduced average speed of 50 km/h\nbecause of the delay. Given this information, what is the total time taken, in hours and\nminutes, for the train to complete the entire journey from City A to City B, including the\nstoppage time?",
+    "options": [
+      {
+        "text": "4 hours 45 minutes",
+        "label": "A"
+      },
+      {
+        "text": "5 hours 15 minutes",
+        "label": "B"
+      },
+      {
+        "text": "5 hours 45 minutes",
+        "label": "C"
+      },
+      {
+        "text": "6 hours 0 minutes",
+        "label": "D"
+      }
+    ],
+    "question_type": "mcq_single",
+    "images": [],
+    "answer": "C: 5 hours 45 minutes",
+    "answer_confidence": 0.85,
+    "answer_source": "answer_key_doc:30ef1dce-d68e-4206-b44d-6096c669017d",
+    "source_pages": [
+      2,
+      3
+    ],
+    "spans_multiple_pages": true,
+    "confidence": 0.95,
+    "status": "success"
+  },
+  {
+    "id": "a59a9b6f-62f1-4d59-a2ef-91d5e61b5ecb",
+    "document_id": "0dbef8fa-4061-491e-a105-18b533570ad9",
+    "question_number": "6",
+    "question_text": "The Great Wall of China is visible from space with the naked eye.\n    True / False\n7 Explain briefly why the sky appears blue during the day.",
+    "options": [],
+    "question_type": "true_false",
+    "images": [],
+    "answer": null,
+    "answer_confidence": null,
+    "answer_source": null,
+    "source_pages": [
+      3
+    ],
+    "spans_multiple_pages": false,
+    "confidence": 1.0,
+    "status": "success"
+  }
+]

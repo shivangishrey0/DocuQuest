@@ -1,0 +1,1 @@
+This is a plain text file used to demonstrate rejection of unsupported uploads.
